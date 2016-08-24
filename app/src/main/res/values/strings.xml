@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MathQuiz</string>
+    <string name="question_1">Is 19 a prime number</string>
+    <string name="question_2">Is 21 a prime number</string>
+    <string name="question_3">Is 143 a prime number</string>
+    <string name="question_4">Is 101 a prime number</string>
+    <string name="question_5">Is 22 a prime number</string>
+    <string name="true_button">True</string>
+    <string name="false_button">False</string>
+    <string name="correct_toast">Correct!</string>
+    <string name="incorrect_toast">Incorrect!</string>
+    <string name="next_button">Next</string>
+    <string name="shashank7200_gmail_com">shashank7200@gmail.com</string>
+</resources>
