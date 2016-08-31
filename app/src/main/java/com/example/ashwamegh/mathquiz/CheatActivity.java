@@ -15,7 +15,7 @@ public class CheatActivity extends AppCompatActivity {
     public static Intent newIntent(Context context, int i){
         Intent intent= new Intent(context, CheatActivity.class);
         intent.putExtra(Cheat_Index,i);
-        
+
         return intent;
 
     }
