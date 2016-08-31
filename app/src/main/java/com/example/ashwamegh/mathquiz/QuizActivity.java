@@ -79,7 +79,8 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d(TAG,"Cheat Button Pressed");
-                Intent i= new Intent(QuizActivity.this,CheatActivity.class);
+                Intent i = new Intent(QuizActivity.this,CheatActivity.class);
+                startActivity(i);
             }
         });
     }
