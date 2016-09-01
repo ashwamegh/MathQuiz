@@ -32,6 +32,15 @@ public class CheatActivity extends AppCompatActivity {
         int i = getIntent().getIntExtra(Cheat_Index,-999);
 
         Log.d(TAG,"Received Value:"+i);
+        if(i>=0){
+            isCheated=true;
+        }
+    }
+
+    private void setAnswerResult(boolean b){
+        Intent i=new Intent();
+        i.putExtra(Is_Cheated,b);
+        setResult(RESULT_OK,i);
     }
 
     @Override
