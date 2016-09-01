@@ -1,5 +1,6 @@
 package com.example.ashwamegh.mathquiz;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.concurrent.ConcurrentHashMap;
+
 public class QuizActivity extends AppCompatActivity {
 
     private Button mTrueButton;
@@ -17,6 +20,7 @@ public class QuizActivity extends AppCompatActivity {
     private TextView mQuestionTextView;
     private Button mCheatButton;
 
+    private boolean mCheated;
     private QuestionBank[] mQuestionBank = new QuestionBank[]{
             new QuestionBank(R.string.question_1, true),
             new QuestionBank(R.string.question_2,true),
@@ -30,6 +34,7 @@ public class QuizActivity extends AppCompatActivity {
 
     private static final String TAG="QuizActivity";
     private static final String KEY_INDEX="INDEX";
+    private static final int REQUEST_CODE_CHEAT=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,9 +85,26 @@ public class QuizActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d(TAG,"Cheat Button Pressed");
                 Intent i = CheatActivity.newIntent(QuizActivity.this,currentIndex);
-                startActivity(i);
+                //startActivity(i);
+                //Replacing the startActivity function with one to reciece data
+
+                startActivityForResult(i,REQUEST_CODE_CHEAT);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        if (resultCode!= Activity.RESULT_OK){
+            return;
+        }
+
+        if(requestCode== REQUEST_CODE_CHEAT){
+            if(data==null){
+                return;
+            }
+            mCheated= CheatActivity.wasCheatShown(data);
+        }
     }
 
     private void updateQuestion() {
@@ -128,6 +150,8 @@ public class QuizActivity extends AppCompatActivity {
         Log.i(TAG,"Inside i call");
         Log.v(TAG,"Inside Verbose");
         Log.w(TAG,"Inside Warning");
+
+        Log.d(TAG,"Did user Cheat"+mCheated); 
     }
     @Override
     protected void onRestart(){

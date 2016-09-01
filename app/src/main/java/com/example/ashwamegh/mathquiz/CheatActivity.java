@@ -14,6 +14,7 @@ public class CheatActivity extends AppCompatActivity {
     private boolean isCheated=false;
 
 
+
     public static Intent newIntent(Context context, int i){
         Intent intent= new Intent(context, CheatActivity.class);
         intent.putExtra(Cheat_Index,i);
@@ -22,6 +23,9 @@ public class CheatActivity extends AppCompatActivity {
 
     }
 
+    public static boolean wasCheatShown(Intent i){
+        return i.getBooleanExtra(Is_Cheated,false);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
