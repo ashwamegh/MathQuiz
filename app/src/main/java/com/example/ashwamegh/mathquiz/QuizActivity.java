@@ -14,6 +14,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class QuizActivity extends AppCompatActivity {
 
+    /** Global Variables Declaration**/
+
     private Button mTrueButton;
     private Button mFalseButton;
     private Button mNextButton;
@@ -21,6 +23,8 @@ public class QuizActivity extends AppCompatActivity {
     private Button mCheatButton;
 
     private boolean mCheated;
+
+    //An Array conataining Predefined Questions
     private QuestionBank[] mQuestionBank = new QuestionBank[]{
             new QuestionBank(R.string.question_1, true),
             new QuestionBank(R.string.question_2,true),
@@ -41,9 +45,10 @@ public class QuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
-
+        //Checking onCreate Method Execution
         Log.d(TAG,"Inside OnCreate Method");
 
+        //Displaying Questions using question view ID
         mQuestionTextView= (TextView) findViewById(R.id.question_text_view);
 
         if (savedInstanceState!=null){
@@ -53,6 +58,7 @@ public class QuizActivity extends AppCompatActivity {
 
 
 
+        //Initialization of True button with a onClickListener
         mTrueButton= (Button) findViewById(R.id.true_button);
         mTrueButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +68,7 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
+        //Initialization of False button with a onClickListener
         mFalseButton =(Button) findViewById(R.id.false_button);
         mFalseButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -70,6 +77,7 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
+        //Initialization of Next button with a onClickListener
         mNextButton = (Button) findViewById(R.id.next_button);
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,12 +86,14 @@ public class QuizActivity extends AppCompatActivity {
                 updateQuestion();
             }
         });
-
+        //Initialization of Cheat button with a onClickListener
         mCheatButton = (Button) findViewById(R.id.cheat_button);
         mCheatButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG,"Cheat Button Pressed");
+
+                //Linking CheatActivity class to display the data visualization by passing currentIndex value
                 Intent i = CheatActivity.newIntent(QuizActivity.this,currentIndex);
                 //startActivity(i);
                 //Replacing the startActivity function with one to reciece data
@@ -107,11 +117,14 @@ public class QuizActivity extends AppCompatActivity {
         }
     }
 
+
+    //It update the Question text view every invocation when the value of currentIndex chanages
     private void updateQuestion() {
         int question = mQuestionBank[currentIndex].getQuestion();
         mQuestionTextView.setText(question);
     }
 
+    //Displaying Toast messages for the True & False Button
     private void checkAnswer(Boolean userPressedTrue){
         Boolean answerisTrue=mQuestionBank[currentIndex].isTrueQuestion();
 
@@ -135,6 +148,8 @@ public class QuizActivity extends AppCompatActivity {
         Log.d(TAG,"Inside onStart");
     }
 
+
+    //Initializing Loggig Activity
     @Override
     protected void onPause(){
         super.onPause();
@@ -169,7 +184,7 @@ public class QuizActivity extends AppCompatActivity {
         super.onDestroy();
 
         Log.d(TAG,"Inside onDestroy");
-    }
+    }  ////Ending Loggig Activity
 
     //Method to save the current State of instances//
     @Override

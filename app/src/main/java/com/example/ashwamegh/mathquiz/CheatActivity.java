@@ -8,6 +8,8 @@ import android.util.Log;
 
 public class CheatActivity extends AppCompatActivity {
 
+
+    //Declaration of Global Identifiers
     public static final String TAG="CheatActivity";
     public static final String Cheat_Index= "CheatIndex";
     private static final String Is_Cheated="Is_Cheated";
@@ -15,6 +17,7 @@ public class CheatActivity extends AppCompatActivity {
 
 
 
+    //Intent Method to receive the data from QuizActivity class and Process further
     public static Intent newIntent(Context context, int i){
         Intent intent= new Intent(context, CheatActivity.class);
         intent.putExtra(Cheat_Index,i);
@@ -23,6 +26,7 @@ public class CheatActivity extends AppCompatActivity {
 
     }
 
+    //Judges and return the boolean value it receives
     public static boolean wasCheatShown(Intent i){
         return i.getBooleanExtra(Is_Cheated,false);
     }
@@ -33,6 +37,8 @@ public class CheatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cheat);
 
         Log.d(TAG,"Inside OnCreate of CheatActivity");
+
+        //Gets the integer value from newIntent method and saves it to check the corresponding value
         int i = getIntent().getIntExtra(Cheat_Index,-999);
 
         Log.d(TAG,"Received Value:"+i);
@@ -42,6 +48,8 @@ public class CheatActivity extends AppCompatActivity {
         setAnswerResult(isCheated);
     }
 
+
+    //Check if the user has cheated or not
     private void setAnswerResult(boolean b){
         Intent i=new Intent();
         i.putExtra(Is_Cheated,b);
