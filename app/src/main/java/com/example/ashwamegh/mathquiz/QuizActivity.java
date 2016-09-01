@@ -151,7 +151,7 @@ public class QuizActivity extends AppCompatActivity {
         Log.v(TAG,"Inside Verbose");
         Log.w(TAG,"Inside Warning");
 
-        Log.d(TAG,"Did user Cheat"+mCheated); 
+        Log.d(TAG,"Did user Cheat"+mCheated);
     }
     @Override
     protected void onRestart(){
