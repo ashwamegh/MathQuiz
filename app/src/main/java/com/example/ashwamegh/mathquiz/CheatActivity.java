@@ -10,6 +10,8 @@ public class CheatActivity extends AppCompatActivity {
 
     public static final String TAG="CheatActivity";
     public static final String Cheat_Index= "CheatIndex";
+    private static final String Is_Cheated="Is_Cheated";
+    private boolean isCheated=false;
 
 
     public static Intent newIntent(Context context, int i){
@@ -27,6 +29,9 @@ public class CheatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cheat);
 
         Log.d(TAG,"Inside OnCreate of CheatActivity");
+        int i = getIntent().getIntExtra(Cheat_Index,-999);
+
+        Log.d(TAG,"Received Value:"+i);
     }
 
     @Override
