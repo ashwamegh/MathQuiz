@@ -39,6 +39,7 @@ public class CheatActivity extends AppCompatActivity {
         if(i>=0){
             isCheated=true;
         }
+        setAnswerResult(isCheated);
     }
 
     private void setAnswerResult(boolean b){
