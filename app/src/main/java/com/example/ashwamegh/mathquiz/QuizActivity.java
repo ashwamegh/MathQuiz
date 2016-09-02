@@ -94,10 +94,12 @@ public class QuizActivity extends AppCompatActivity {
                 Log.d(TAG,"Cheat Button Pressed");
 
                 //Linking CheatActivity class to display the data visualization by passing currentIndex value
-                Intent i = CheatActivity.newIntent(QuizActivity.this,currentIndex);
+               // Intent i = CheatActivity.newIntent(QuizActivity.this,currentIndex);
                 //startActivity(i);
                 //Replacing the startActivity function with one to reciece data
 
+                boolean b = mQuestionBank[currentIndex].isTrueQuestion();
+                Intent i = CheatActivity.newIntent(QuizActivity.this, b);
                 startActivityForResult(i,REQUEST_CODE_CHEAT);
             }
         });
@@ -118,7 +120,7 @@ public class QuizActivity extends AppCompatActivity {
     }
 
 
-    //It update the Question text view every invocation when the value of currentIndex chanages
+    //It updates the Question text view every invocation when the value of currentIndex chanages
     private void updateQuestion() {
         int question = mQuestionBank[currentIndex].getQuestion();
         mQuestionTextView.setText(question);
@@ -149,7 +151,7 @@ public class QuizActivity extends AppCompatActivity {
     }
 
 
-    //Initializing Loggig Activity
+    //Initializing Logging Activity
     @Override
     protected void onPause(){
         super.onPause();
@@ -184,7 +186,7 @@ public class QuizActivity extends AppCompatActivity {
         super.onDestroy();
 
         Log.d(TAG,"Inside onDestroy");
-    }  ////Ending Loggig Activity
+    }  ////Ending Logging Activity
 
     //Method to save the current State of instances//
     @Override

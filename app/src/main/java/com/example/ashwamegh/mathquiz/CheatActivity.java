@@ -11,7 +11,7 @@ public class CheatActivity extends AppCompatActivity {
 
     //Declaration of Global Identifiers
     public static final String TAG="CheatActivity";
-    public static final String Cheat_Index= "CheatIndex";
+    public static final String ANSWER_IS_TRUE= "com.ashwamegh.mathquiz.answer_is_true";
     private static final String Is_Cheated="Is_Cheated";
     private boolean isCheated=false;
 
@@ -20,7 +20,7 @@ public class CheatActivity extends AppCompatActivity {
     //Intent Method to receive the data from QuizActivity class and Process further
     public static Intent newIntent(Context context, boolean b){
         Intent intent= new Intent(context, CheatActivity.class);
-        intent.putExtra(Cheat_Index,b);
+        intent.putExtra(ANSWER_IS_TRUE,b);
 
         return intent;
 
@@ -39,7 +39,7 @@ public class CheatActivity extends AppCompatActivity {
         Log.d(TAG,"Inside OnCreate of CheatActivity");
 
         //Gets the integer value from newIntent method and saves it to check the corresponding value
-        int i = getIntent().getIntExtra(Cheat_Index,-999);
+        int i = getIntent().getIntExtra(ANSWER_IS_TRUE,-999);
 
         Log.d(TAG,"Received Value:"+i);
         if(i>=0){
