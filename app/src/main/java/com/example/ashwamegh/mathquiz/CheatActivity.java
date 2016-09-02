@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class CheatActivity extends AppCompatActivity {
 
@@ -14,6 +16,8 @@ public class CheatActivity extends AppCompatActivity {
     public static final String ANSWER_IS_TRUE= "com.ashwamegh.mathquiz.answer_is_true";
     private static final String Is_Cheated="Is_Cheated";
     private boolean isCheated=false;
+    private TextView mCheatAnswerTextView;
+    private Button mShowCheatButton;
 
 
 
@@ -39,12 +43,8 @@ public class CheatActivity extends AppCompatActivity {
         Log.d(TAG,"Inside OnCreate of CheatActivity");
 
         //Gets the integer value from newIntent method and saves it to check the corresponding value
-        int i = getIntent().getIntExtra(ANSWER_IS_TRUE,-999);
+        isCheated = getIntent().getBooleanExtra(ANSWER_IS_TRUE, false);
 
-        Log.d(TAG,"Received Value:"+i);
-        if(i>=0){
-            isCheated=true;
-        }
         setAnswerResult(isCheated);
     }
 
