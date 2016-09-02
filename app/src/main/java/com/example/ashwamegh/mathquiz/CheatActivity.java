@@ -18,9 +18,9 @@ public class CheatActivity extends AppCompatActivity {
 
 
     //Intent Method to receive the data from QuizActivity class and Process further
-    public static Intent newIntent(Context context, int i){
+    public static Intent newIntent(Context context, boolean b){
         Intent intent= new Intent(context, CheatActivity.class);
-        intent.putExtra(Cheat_Index,i);
+        intent.putExtra(Cheat_Index,b);
 
         return intent;
 
@@ -49,11 +49,12 @@ public class CheatActivity extends AppCompatActivity {
     }
 
 
-    //Check if the user has cheated or not
+    //Check if the user has cheated or not and Set The Result
     private void setAnswerResult(boolean b){
         Intent i=new Intent();
         i.putExtra(Is_Cheated,b);
         setResult(RESULT_OK,i);
+
     }
 
     @Override
