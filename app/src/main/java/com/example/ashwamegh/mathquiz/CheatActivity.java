@@ -47,12 +47,14 @@ public class CheatActivity extends AppCompatActivity {
         isCheated = getIntent().getBooleanExtra(ANSWER_IS_TRUE, false);
 
 
-        //Initialising cheat button
-        mShowCheatButton=(Button) findViewById(R.id.show_cheat_button);
+
 
         //Setting cheat Answer text view to receive the cheat hint
         mCheatAnswerTextView=(TextView) findViewById(R.id.cheatAnswer_text_view);
-        mCheatAnswerTextView.setOnClickListener(new View.OnClickListener() {
+
+        //Initialising cheat button
+        mShowCheatButton=(Button) findViewById(R.id.show_cheat_button);
+        mShowCheatButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (isCheated){
