@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -45,6 +46,22 @@ public class CheatActivity extends AppCompatActivity {
         //Gets the integer value from newIntent method and saves it to check the corresponding value
         isCheated = getIntent().getBooleanExtra(ANSWER_IS_TRUE, false);
 
+
+        //Initialising cheat button
+        mShowCheatButton=(Button) findViewById(R.id.show_cheat_button);
+
+        //Setting cheat Answer text view to receive the cheat hint
+        mCheatAnswerTextView=(TextView) findViewById(R.id.cheatAnswer_text_view);
+        mCheatAnswerTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isCheated){
+                    mCheatAnswerTextView.setText(R.string.true_button);
+                }
+                else
+                    mCheatAnswerTextView.setText(R.string.false_button);
+            }
+        });
         setAnswerResult(isCheated);
     }
 
