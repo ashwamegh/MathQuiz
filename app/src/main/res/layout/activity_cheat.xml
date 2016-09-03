@@ -14,20 +14,22 @@
 
     <TextView
 
-        android:id="@+id/cheatAnswer_text_view"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="24dp"
         android:text="@string/cheat_warning_text"/>
 
     <TextView
+        android:id="@+id/cheatAnswer_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="24dp"
-        android:text="@string/answer"/>
+         />
+    <!--android:text="@string/answer"-->
 
     <Button
-        android:id="@+id/show_cheat-button"
+        android:id="@+id/show_cheat_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/show_cheat_button"/>

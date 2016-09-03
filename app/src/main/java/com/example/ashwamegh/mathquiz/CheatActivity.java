@@ -62,9 +62,10 @@ public class CheatActivity extends AppCompatActivity {
                 }
                 else
                     mCheatAnswerTextView.setText(R.string.false_button);
+
+                setAnswerResult(true);
             }
         });
-        setAnswerResult(isCheated);
     }
 
 

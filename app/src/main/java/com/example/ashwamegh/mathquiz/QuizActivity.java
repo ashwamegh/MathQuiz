@@ -84,6 +84,8 @@ public class QuizActivity extends AppCompatActivity {
             public void onClick(View v) {
                 currentIndex=(currentIndex +1)% mQuestionBank.length;
                 updateQuestion();
+                mCheated=false;
+
             }
         });
         //Initialization of Cheat button with a onClickListener
@@ -132,13 +134,18 @@ public class QuizActivity extends AppCompatActivity {
 
         int messageResId=0;
 
-        if(userPressedTrue==answerisTrue){
-
-            messageResId=R.string.correct_toast;
-
+        if (mCheated){
+            messageResId=R.string.cheat_toast;
         }
-        else{
-            messageResId=R.string.incorrect_toast;
+
+        else {
+            if (userPressedTrue == answerisTrue) {
+
+                messageResId = R.string.correct_toast;
+
+            } else {
+                messageResId = R.string.incorrect_toast;
+            }
         }
         Toast.makeText(this, messageResId,Toast.LENGTH_SHORT).show();
     }
