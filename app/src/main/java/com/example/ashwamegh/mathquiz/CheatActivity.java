@@ -2,6 +2,7 @@ package com.example.ashwamegh.mathquiz;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,6 +20,7 @@ public class CheatActivity extends AppCompatActivity {
     private boolean isCheated=false;
     private TextView mCheatAnswerTextView;
     private Button mShowCheatButton;
+    private String mCheat;
 
 
 
@@ -37,7 +39,7 @@ public class CheatActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cheat);
 
@@ -47,9 +49,7 @@ public class CheatActivity extends AppCompatActivity {
         isCheated = getIntent().getBooleanExtra(ANSWER_IS_TRUE, false);
 
 
-
-
-        //Setting cheat Answer text view to receive the cheat hint
+                //Setting cheat Answer text view to receive the cheat hint
         mCheatAnswerTextView=(TextView) findViewById(R.id.cheatAnswer_text_view);
 
         //Initialising cheat button
@@ -57,6 +57,9 @@ public class CheatActivity extends AppCompatActivity {
         mShowCheatButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Log.d(TAG,"Show Cheat Pressed");
+
                 if (isCheated){
                     mCheatAnswerTextView.setText(R.string.true_button);
                 }
@@ -64,6 +67,12 @@ public class CheatActivity extends AppCompatActivity {
                     mCheatAnswerTextView.setText(R.string.false_button);
 
                 setAnswerResult(true);
+
+                //Introduced Implicit Intents to evoke a webpage in another application(Here :A browser)//
+
+                Uri webpage= Uri.parse("http://www.android.com");
+                Intent wenIntent=new Intent(Intent.ACTION_VIEW,webpage);
+                startActivity(wenIntent);
             }
         });
     }
